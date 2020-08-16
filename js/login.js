@@ -1,17 +1,17 @@
 const inputs = document.querySelectorAll(".input");
 
 
-function add(){
+function add() {
 	let input = this.parentNode.parentNode;
 	input.classList.add("focus");
 }
 
-function remove(){
+function remove() {
 	let input = this.parentNode.parentNode;
-	if(this.value == ""){
+	if (this.value == "") {
 		input.classList.remove("focus");
 	}
-} 
+}
 
 
 inputs.forEach(input => {
