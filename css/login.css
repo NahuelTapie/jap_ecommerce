@@ -5,8 +5,7 @@
 	font-family: sans-serif;
 }
 body{
-	background-image: url("./img/login_background.png");
-	background-image: url("login_background.png");
+	background-image: url("https://github.com/NahuelTapie/jap_ecommerce/blob/master/img/login_background.png?raw=true");
 	background-size: 100%;
 }
 
