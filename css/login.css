@@ -32,7 +32,7 @@ form{
 	opacity: 84%;
 	margin-top: -18px;
 	width: 350px;
-	height: 324px;
+	height: 355px;
 	background-color: white;
 	background-image: none;
 }
@@ -124,7 +124,7 @@ form{
 img{
 	opacity: 82%;
 	display: block;
-	width: 92%;
+	width: 101%;
 	padding-bottom: 18px;
 }
 
@@ -146,6 +146,15 @@ img{
 	margin-top: 30px;
 	cursor: pointer;
 }
+
+.g-signin2{
+	text-align: center;
+	align-items: center;
+	padding-top: 8.0245%;  
+	padding-left: 69.3%;
+}
+
+
 
 
 
