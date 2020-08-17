@@ -63,7 +63,7 @@ form{
 	transform: translateY(-5%);
 	color: #999;
 	font-size: 18px;
-	transition: .3s;
+	transition: .6s;
 }
 
 .input-div:before, .input-div:after{
@@ -73,7 +73,7 @@ form{
 	width: 0%;
 	height: 2px;
 	background-color: #d3384d;
-	transition: 0.4s;
+	transition: 0.5s;
 }
 
 .input-div:before{
