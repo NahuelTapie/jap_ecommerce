@@ -22,7 +22,7 @@ inputs.forEach(input => {
 
 
 addEventListener("DOMContentLoaded", function(e){
-	document.getElementsByClassName("btn").addEventListener("click", function(){
+	document.getElementsByClassName("btn").addEventListener("onclick", function(){
 		let email = getElementsByClassName("email");
 		let password = getElementsByClassName("pass");
 		let campo = true;
