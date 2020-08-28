@@ -39,6 +39,7 @@ addEventListener("DOMContentLoaded", function(e){
 
 		if (campo){
 			localStorage.setItem("email", JSON.stringify({mail = email.value}));
+			window.location = "index.html";
 		}else{
 			alert("No deben haber espacios en blanco");
 		}
