@@ -1,20 +1,29 @@
-const inputs = document.querySelectorAll(".input");
+addEventListener("DOMContentLoaded", function(e){
+	document.getElementsByClassName("btn").addEventListener("click", function(){
+		let email = getElementsByClassName("email");
+		let password = getElementsByClassName("pass");
+		let campo = true;
 
+		if (email.value = ""){
+			email.classList.add("inválido");
+			campo = false;
+		}
 
-function add() {
-	let input = this.parentNode.parentNode;
-	input.classList.add("focus");
-}
+		if (pass.value = ""){
+			pass.classList.add("inválido");
+			campo = false;
+		}
 
-function remove() {
-	let input = this.parentNode.parentNode;
-	if (this.value == "") {
-		input.classList.remove("focus");
-	}
-}
-
-
-inputs.forEach(input => {
-	input.addEventListener("focus", add);
-	input.addEventListener("blur", remove);
+		if (campo){
+			localStorage.setItem("email", JSON.stringify({mail = email.value}));
+			window.location = "index.html";
+		}else{
+			alert("No deben haber espacios en blanco");
+		}
+	})
 });
+
+
+
+
+ 
