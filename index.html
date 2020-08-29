@@ -4,9 +4,6 @@
 	<title>Login eMercado</title>
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="557088568532-8ktu65s3hu28tcm4di488espipaujv6v.apps.googleusercontent.com">
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script type="text/javascript" src="js/login.js"></script>
 </head>
 <body>
@@ -36,22 +33,5 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="js/login-transition.js"></script>
-	<script>
-		function onSignIn(googleUser) {
-		  // Useful data for your client-side scripts:
-		  var profile = googleUser.getBasicProfile();
-		  console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-		  console.log('Full Name: ' + profile.getName());
-		  console.log('Given Name: ' + profile.getGivenName());
-		  console.log('Family Name: ' + profile.getFamilyName());
-		  console.log("Image URL: " + profile.getImageUrl());
-		  console.log("Email: " + profile.getEmail());
-  
-		  // The ID token you need to pass to your backend:
-		  var id_token = googleUser.getAuthResponse().id_token;
-		  console.log("ID Token: " + id_token);
-		}
-	  </script>
-	  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 </body>
 </html>
