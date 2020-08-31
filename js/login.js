@@ -1,49 +1,36 @@
-addEventListener("DOMContentLoaded", function(e){
-	document.getElementsByClassName("btn").addEventListener("click", function(){
-		let email = getElementsByClassName("email");
-		let password = getElementsByClassName("pass");
+document.addEventListener("DOMContentLoaded", function(e) {
+
+	document.getElementById("btn").addEventListener("click", function(e) {
+		
+		let email = document.getElementById("email");
+		let pass = document.getElementById("pass");
 		let campo = true;
 
-		if (email.value = ""){
-			email.classList.add("inválido");
+		if (email.value === ""){
+			email.classList.add("invalid");
 			campo = false;
 		}
 
-		if (pass.value = ""){
-			pass.classList.add("inválido");
+		if (pass.value === ""){
+			pass.classList.add("invalid");
 			campo = false;
 		}
 
 		if (campo){
-			localStorage.setItem("email", JSON.stringify({mail = email.value}));
-			window.location = "index.html";
+
+				//---------------------------
+				localStorage.setItem('user-logged', JSON.stringify({ email: email.value}));
+				//---------------------------
+				
+				window.location = 'cover.html';
+
 		}else{
-			alert("No deben haber espacios en blanco");
+			alert("Debes ingresar los datos!");
 		}
-	})
+	});
 });
 
 
 
 
  
-const inputs = document.querySelectorAll(".input");
-
-
-function add() {
-	let input = this.parentNode.parentNode;
-	input.classList.add("focus");
-}
-
-function remove() {
-	let input = this.parentNode.parentNode;
-	if (this.value == "") {
-		input.classList.remove("focus");
-	}
-}
-
-
-inputs.forEach(input => {
-	input.addEventListener("focus", add);
-	input.addEventListener("blur", remove);
-});
