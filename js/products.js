@@ -1,5 +1,6 @@
 const ORDER_ASC_BY_PRICE = "price -> PRICE"
 const ORDER_DESC_BY_PRICE = "PRICE -> price"
+const ORDER_BY_RELEVANCE = "soldCount -> SOLDCOUNT"
 
 var productsArray = [];
 var minPrice = undefined;
@@ -31,8 +32,14 @@ function sortProducts(cond, array){
                 return 0;
 
         });
-    }
 
+    }else if (cond === ORDER_BY_RELEVANCE){
+        result = array.sort(function (a,b){
+            if (a.soldCount > b.soldCount) {return -1;}
+            if (a.soldCount < b.soldCount) {return 1;}
+            return 0;
+        });
+    }
 
         return result;
 }
@@ -45,8 +52,8 @@ function showProductsList(array){
     for(let i = 0; i < array.length; i++){
         let category = array[i];
 
-        if (((minPrice == undefined) || (minPrice != undefined && parseInt(product.cost) >= minPrice)) &&
-            ((maxPrice == undefined) || (maxPrice != undefined && parseInt(product.cost) <= maxPrice))) {
+        if (((minPrice == undefined) || (minPrice != undefined && parseInt(category.cost) >= minPrice)) &&
+            ((maxPrice == undefined) || (maxPrice != undefined && parseInt(category.cost) <= maxPrice))) {
 
         htmlContentToAppend += `
         <div class="prod-group-item prod-group-item-action">
@@ -99,6 +106,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showProductsList(productsArray);
     });
 
+    document.getElementById("sortByRelevance").addEventListener("click",function(){
+        productsArray = sortProducts(ORDER_BY_RELEVANCE, productsArray);
+
+        showProductsList(productsArray);
+    });
+
+    //----------------------------------
+
     document.getElementById("filter").addEventListener("click", function () {
 
 
@@ -118,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         else {
             maxPrice = undefined;
         }
+        
         showProductsList(productsArray);
     });
     
