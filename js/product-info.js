@@ -2,8 +2,11 @@ function productInfo(){
     $.getJSONData("https://japdevdep.github.io/ecommerce-api/product/5678.json");
 }
 
-function showProductInfo(){
+var productComments = [];
 
+function showProductInfo(array, arrayComments){
+
+    let htmlContentToAppendComm = "";
     let htmlContentToAppend = "";
 
     htmlContentToAppend += `
@@ -48,16 +51,34 @@ function showProductInfo(){
     `
 
     document.getElementById("prodInfo").innerHTML = htmlContentToAppend;
+
+    for(let i = 0; i < productComments.length; i++){
+        var rate = "";
+        let comments = productComments[i];
+
+
+        htmlContentToAppendComm +=`
+        <div>`+comments.description+`</div>
+        `
+        document.getElementById("prodComments").innerHTML = htmlContentToAppendComm;
+    } 
 }
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
+        if(resultObj.status === "ok"){
+            productComments = resultObj.data;
+        }
+    })
+
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             productInfo = resultObj.data;
-            showProductInfo(productInfo);
+            showProductInfo(productInfo, productComments);
         }
     });
 });
