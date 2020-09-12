@@ -55,6 +55,7 @@ function showProductInfo(array, arrayComments){
     <small>` + productInfo.soldCount + ` vendidos</small>
     `
 
+
     document.getElementById("prodInfo").innerHTML = htmlContentToAppend;
 
     for(let i = 0; i < productComments.length; i++){
@@ -63,7 +64,12 @@ function showProductInfo(array, arrayComments){
 
 
         htmlContentToAppendComm +=`
-        <div>`+comments.description+`</div>
+        <div>
+            <h5>`+ comments.user + `</h5>
+            <p>`+comments.description+`</p>
+            <div>` + comments.score + `</div>
+            <div>` + comments.dateTime + `</div>
+        </div>
         `
         document.getElementById("prodComments").innerHTML = htmlContentToAppendComm;
     } 
