@@ -59,20 +59,30 @@ function showProductInfo(array, arrayComments){
     document.getElementById("prodInfo").innerHTML = htmlContentToAppend;
 
     for(let i = 0; i < productComments.length; i++){
-        var rate = "";
+        var calification = "";
         let comments = productComments[i];
 
+        for (let i= 1; i <= comments.score; i++) {
+            calification += `<span class="fa fa-star checked"></span>`
+        }
+
+        for(let i = comments.score + 1; i <= 5; i++){
+            calification += `<span class="fa fa-star"></span>`
+        }
 
         htmlContentToAppendComm +=`
         <div>
             <h5>`+ comments.user + `</h5>
             <p>`+comments.description+`</p>
-            <div>` + comments.score + `</div>
+            <div>` + comments.calification + `</div>
             <div>` + comments.dateTime + `</div>
         </div>
         `
+
         document.getElementById("prodComments").innerHTML = htmlContentToAppendComm;
     } 
+
+
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
