@@ -49,9 +49,10 @@ function showProductInfo(array, arrayComments){
     document.getElementById("carousel").innerHTML = htmlCarousel;
 
     htmlContentToAppend += `
-    <h4>`+ productInfo.name +`</h4>
-    <p>` + productInfo.description +`</p><br><br>
-    <h5>` +productInfo.currency+ " "+productInfo.cost +`</h5>
+    <h2><strong>`+ productInfo.name +`</strong></h2><br>
+    <h4><strong>Descripción</strong></h4>
+    <p style="font-size: 120%;">` + productInfo.description +`</p><br><br>
+    <h4>` +productInfo.currency+ " "+productInfo.cost +`</h4>
     <small>` + productInfo.soldCount + ` vendidos</small>
     `
 
