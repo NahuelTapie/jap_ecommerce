@@ -73,12 +73,11 @@ function showProductInfo(array, arrayComments){
 
         htmlContentToAppendComm +=`
         <div>
-            <h5>`+ comments.user + `</h5>
-            <p>`+comments.description+`</p>
-            <div>` + comments.calification + `</div>
-            <div>` + comments.dateTime + `</div>
+            <h5>`+ `<span style="font-size: 150%; position:relative; top: 4px;" class="fa fa-user"></span>` + " " + `<strong>`+ comments.user+ `</strong>` + " " +`${calification}` + `<span style="float: right; font-size: 15px;">`+comments.dateTime+`<span>` +`</h5>
+            <p style="position:relative; left: 27px;">`+comments.description+`</p>
         </div>
         `
+
 
         document.getElementById("prodComments").innerHTML = htmlContentToAppendComm;
     } 
