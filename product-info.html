@@ -23,13 +23,23 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <a class="py-2 d-none d-md-inline-block" id="user" href="cart.html">Mi carrito</a>
+      <div id="info-user" style="display: none;"><a class="py-2 d-none d-md-inline-block" id="user"></a></div>
     </div>
   </nav>
   <div id="carousel"></div>
   <div class="container p-5">
     <div id="prodInfo"></div>
+    <div>
+      <h2><strong>Comentarios:</strong></h2>
+      <div id="comments-cont" style="display: none; position: relative; margin: auto; width: 85%; height: 155px;">
+        <textarea id="new-comment" rows="4" style="width: 100%;"></textarea>
+        <input type="submit" id="submit-comment" value="Publicar comentario" style="float: right; margin-right: 10px; margin-top: 5px;">
+        <div id="star"></div>
+      </div>
+    </div>
     <div id="prodComments"></div>
+    <div id="relatedProducts"></div>
   </div>
   <footer class="text-muted">
     <div class="container">

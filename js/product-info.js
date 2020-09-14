@@ -49,11 +49,16 @@ function showProductInfo(array, arrayComments){
     document.getElementById("carousel").innerHTML = htmlCarousel;
 
     htmlContentToAppend += `
+    <div style="height: 450px">
     <h2><strong>`+ productInfo.name +`</strong></h2><br>
+    <div style="box-sizing: border-box; width: 660px; float: right;">
     <h4><strong>Descripción</strong></h4>
     <p style="font-size: 120%;">` + productInfo.description +`</p><br><br>
-    <h4>` +productInfo.currency+ " "+productInfo.cost +`</h4>
-    <small>` + productInfo.soldCount + ` vendidos</small>
+    </div>
+    <h4 style="position:relative; left: 9%; top: 100px;">` + `<span style="color: green;"><strong>`+productInfo.currency+`</strong></span>` + " "+ productInfo.cost +`</h4>
+    <small style="position:relative; left: 10%; font-size: 16px; bottom: 10px; top: 100px; text-decoration: underline;">` + productInfo.soldCount + ` vendidos</small>
+    </div>
+    <hr>
     `
 
 
@@ -72,7 +77,7 @@ function showProductInfo(array, arrayComments){
         }
 
         htmlContentToAppendComm +=`
-        <div>
+        <div style="position: relative; width: 85%; margin: auto;">
             <h5>`+ `<span style="font-size: 150%; position:relative; top: 4px;" class="fa fa-user"></span>` + " " + `<strong>`+ comments.user+ `</strong>` + " " +`${calification}` + `<span style="float: right; font-size: 15px;">`+comments.dateTime+`<span>` +`</h5>
             <p style="position:relative; left: 27px;">`+comments.description+`</p>
         </div>
@@ -83,6 +88,15 @@ function showProductInfo(array, arrayComments){
     } 
 
 
+}
+
+function getRating(){
+    var elements = document.getElementsByName("rating");
+    for(var i = 0; i < elements.length; i++){
+        if(elements[i].checked){
+            return parseInt(elements[i].value);
+        }
+    }
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -101,4 +115,58 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showProductInfo(productInfo, productComments);
         }
     });
+
+    let userLogged = localStorage.getItem('user-logged');
+    if(userLogged){
+        document.getElementById("comments-cont").style = "display: block; position:relative ; margin: auto; width: 85%; height: 155px;";
+    }
+
+    document.getElementById("star").innerHTML = `
+        <div class="stars-rating">
+        <input id="star-5" type="radio" name"rating" value="5"/>
+        <label for="star-5" title="5 stars">
+        <i class="active fa fa-star"></i>
+        </label>
+
+        <input id="star-4" type="radio" name"rating" value="4"/>
+            <label for="star-4" title="4 stars">
+            <i class="active fa fa-star"></i>
+        </label>
+
+        <input id="star-3" type="radio" name"rating" value="3"/>
+            <label for="star-3" title="3 stars">
+            <i class="active fa fa-star"></i>
+        </label>
+
+        <input id="star-2" type="radio" name"rating value="2"/>
+            <label for="star-2" title="2 stars">
+            <i class="active fa fa-star"></i>
+        </label>
+
+        <input id="star-1" type="radio" name"rating" value="1" checked/>
+            <label for="star-1" title="1 stars">
+            <i class="active fa fa-star"></i>
+        </label>
+        </div>
+    `;
+
+    document.getElementById("submit-comment").addEventListener("click", function(){
+        let now = new Date();
+
+        let dateTime = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()} `;
+        dateTime += `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}` ;
+
+        let newComment = {
+            calification: getRating(),
+            comment: document.getElementById("new-comment").value,
+            user: JSON.parse(localStorage.getItem('user-logged')).email,
+            dateTime: dateTime
+        };
+
+        productComments.push(newComment);
+
+        showProductInfo(productInfo, productComments);
+
+    })
+
 });

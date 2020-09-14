@@ -161,4 +161,28 @@ a.custom-card:hover {
   max-height: 92.618vh !important;
 }
 
+.stars-rating {
+  direction: rtl;
+  display: inline-block;
+  padding: 20px
+}
+
+.stars-rating input[type=radio] {
+  display: none
+}
+
+.stars-rating label {
+  position: relative;
+  color: rgb(133, 142, 192);
+  font-size: 30px;
+  bottom: 21px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.stars-rating label:hover,
+.stars-rating label:hover~label,
+.stars-rating input[type=radio]:checked~label {
+  color: #ffbf00
+}
 
