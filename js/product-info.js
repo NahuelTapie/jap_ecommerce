@@ -48,6 +48,9 @@ function showProductInfo(array, arrayComments){
     `
     document.getElementById("carousel").innerHTML = htmlCarousel;
 
+
+    //---------------------------------------------------------------------------------------------
+    //JSON Products Info
     htmlContentToAppend += `
     <div style="height: 450px">
     <h2><strong>`+ productInfo.name +`</strong></h2><br>
@@ -63,7 +66,11 @@ function showProductInfo(array, arrayComments){
 
 
     document.getElementById("prodInfo").innerHTML = htmlContentToAppend;
+    //---------------------------------------------------------------------------------------------
 
+
+    //---------------------------------------------------------------------------------------------
+    //JSON Comments
     for(let i = 0; i < productComments.length; i++){
         var calification = "";
         let comments = productComments[i];
@@ -80,24 +87,20 @@ function showProductInfo(array, arrayComments){
         <div style="position: relative; width: 85%; margin: auto;">
             <h5>`+ `<span style="font-size: 150%; position:relative; top: 4px;" class="fa fa-user"></span>` + " " + `<strong>`+ comments.user+ `</strong>` + " " +`${calification}` + `<span style="float: right; font-size: 15px;">`+comments.dateTime+`<span>` +`</h5>
             <p style="position:relative; left: 27px;">`+comments.description+`</p>
+            <hr>
         </div>
         `
 
 
         document.getElementById("prodComments").innerHTML = htmlContentToAppendComm;
+    
     } 
 
+    //---------------------------------------------------------------------------------------------
 
 }
 
-function getRating(){
-    var elements = document.getElementsByName("rating");
-    for(var i = 0; i < elements.length; i++){
-        if(elements[i].checked){
-            return parseInt(elements[i].value);
-        }
-    }
-}
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -123,32 +126,41 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     document.getElementById("star").innerHTML = `
         <div class="stars-rating">
-        <input id="star-5" type="radio" name"rating" value="5"/>
+        <input id="star-5" type="radio" name="rating" value="5"/>
         <label for="star-5" title="5 stars">
         <i class="active fa fa-star"></i>
         </label>
 
-        <input id="star-4" type="radio" name"rating" value="4"/>
+        <input id="star-4" type="radio" name="rating" value="4"/>
             <label for="star-4" title="4 stars">
             <i class="active fa fa-star"></i>
         </label>
 
-        <input id="star-3" type="radio" name"rating" value="3"/>
+        <input id="star-3" type="radio" name="rating" value="3"/>
             <label for="star-3" title="3 stars">
             <i class="active fa fa-star"></i>
         </label>
 
-        <input id="star-2" type="radio" name"rating value="2"/>
+        <input id="star-2" type="radio" name="rating" value="2"/>
             <label for="star-2" title="2 stars">
             <i class="active fa fa-star"></i>
         </label>
 
-        <input id="star-1" type="radio" name"rating" value="1" checked/>
+        <input id="star-1" type="radio" name="rating" value="1" checked/>
             <label for="star-1" title="1 stars">
             <i class="active fa fa-star"></i>
         </label>
         </div>
     `;
+
+    function getRating(){
+        var elements = document.getElementsByName("rating");
+        for(var i = 0; i < elements.length; i++){
+            if(elements[i].checked){
+                return parseInt(elements[i].value);
+            }
+        }
+    }
 
     document.getElementById("submit-comment").addEventListener("click", function(){
         let now = new Date();
@@ -156,9 +168,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let dateTime = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()} `;
         dateTime += `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}` ;
 
+
         let newComment = {
-            calification: getRating(),
-            comment: document.getElementById("new-comment").value,
+            score: getRating(),
+            description: document.getElementById("new-comment").value,
             user: JSON.parse(localStorage.getItem('user-logged')).email,
             dateTime: dateTime
         };
