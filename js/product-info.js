@@ -2,13 +2,15 @@ function productInfo(){
     $.getJSONData("https://japdevdep.github.io/ecommerce-api/product/5678.json");
 }
 
+var productsArray = [];
 var productComments = [];
 
-function showProductInfo(array, arrayComments){
+function showProductInfo(){
 
     let htmlContentToAppendComm = "";
     let htmlContentToAppend = "";
     let htmlCarousel = "";
+    let htmlContentRelatedProducts = "";
 
     htmlCarousel += `
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000" style="margin: auto;">
@@ -49,8 +51,7 @@ function showProductInfo(array, arrayComments){
     document.getElementById("carousel").innerHTML = htmlCarousel;
 
 
-    //---------------------------------------------------------------------------------------------
-    //JSON Products Info
+    //--------------------------------------JSON Products Info-------------------------------------------------------
     htmlContentToAppend += `
     <div style="height: 450px">
     <h2><strong>`+ productInfo.name +`</strong></h2><br>
@@ -69,8 +70,8 @@ function showProductInfo(array, arrayComments){
     //---------------------------------------------------------------------------------------------
 
 
-    //---------------------------------------------------------------------------------------------
-    //JSON Comments
+    //------------------------------------------JSON Comments---------------------------------------------------
+
     for(let i = 0; i < productComments.length; i++){
         var calification = "";
         let comments = productComments[i];
@@ -95,8 +96,26 @@ function showProductInfo(array, arrayComments){
         document.getElementById("prodComments").innerHTML = htmlContentToAppendComm;
     
     } 
-
     //---------------------------------------------------------------------------------------------
+
+}
+
+function showRelatedProducts(productsArray, arrayRelated){
+    let related = "";
+    arrayRelated.forEach(function(i) {
+        related +=`
+        <div style="border: 3px solid #dee2e6; display: flex; margin-top: 10px; width: 48%; margin-right: 1%; margin-left: 1%; background-color: white; border-radius: .25rem;">
+            <img src="` + productsArray[i].imgSrc + `" class="product-img" style="width: 43%; padding: .25rem">
+            <div style="position: relative;">
+                <h3 style="margin-left: 2px;"><b>`+ productsArray[i].name +`</b></h3>
+                <p style="margin-left: 7px; font-size: 17px; margin-right: 2px;">`+ productsArray[i].description +`</p>
+                <h5 style="position: absolute; bottom: 0; right: 5px;"><span style="color: green;"><strong>`+ productsArray[i].currency +`</strong></span>`+ " " + productsArray[i].cost +`</h5>
+            </div>
+        </div>
+        `
+    });
+
+    document.getElementById("relatedProducts").innerHTML = related;
 
 }
 
@@ -110,14 +129,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if(resultObj.status === "ok"){
             productComments = resultObj.data;
         }
-    })
+    });
 
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             productInfo = resultObj.data;
-            showProductInfo(productInfo, productComments);
+            showProductInfo(productInfo, productComments, relatedProducts);
         }
     });
+
+    getJSONData(PRODUCTS_URL).then(function (resultObj){
+        if(resultObj.status === "ok"){
+            productsArray = resultObj.data;
+
+            showRelatedProducts(productsArray, productInfo.relatedProducts);
+        }
+    });
+
 
     let userLogged = localStorage.getItem('user-logged');
     if(userLogged){
