@@ -53,8 +53,22 @@ document.addEventListener("DOMContentLoaded", function(e){
     userLog = JSON.parse(userLog);
     user.innerText = user.innerText + userLog.email;
     infoUser.style = "display: inline-block; color: #d3384d";
+  }else{
+    user.innerText = user.innerText + "Iniciar sesión";
+    document.getElementById("user").classList.remove("dropdown-toggle");
+    document.getElementById("user").classList.add("dropdown");
+    /*document.getElementById("user").addEventListener("click", function(e){
+      window.location = "index.html";
+    });*/
+
   }
 
+
+});
+
+document.getElementById("salir").addEventListener("click", function(e){
+  localStorage.removeItem("user-logged");
+  window.location = "index.html"
 });
 /*
 document.getElementById("salir").addEventListener("click", function(e){
