@@ -60,7 +60,7 @@ function showProductInfo(){
     <p style="font-size: 120%;">` + productInfo.description +`</p><br><br>
     </div>
     <h4 style="position:relative; left: 9%; top: 100px;">` + `<span style="color: green;"><strong>`+productInfo.currency+`</strong></span>` + " "+ productInfo.cost +`</h4>
-    <small style="position:relative; left: 10%; font-size: 16px; bottom: 10px; top: 100px; text-decoration: underline;">` + productInfo.soldCount + ` vendidos</small>
+    <small style="position:relative; left: 10%; font-size: 16px; top: 100px; text-decoration: underline;">` + productInfo.soldCount + ` vendidos</small>
     </div>
     <hr>
     `
@@ -85,11 +85,9 @@ function showProductInfo(){
         }
 
         htmlContentToAppendComm +=`
-        <div style="position: relative; width: 85%; margin: auto;">
             <h5>`+ `<span style="font-size: 150%; position:relative; top: 4px;" class="fa fa-user"></span>` + " " + `<strong>`+ comments.user+ `</strong>` + " " +`${calification}` + `<span style="float: right; font-size: 15px;">`+comments.dateTime+`<span>` +`</h5>
             <p style="position:relative; left: 27px;">`+comments.description+`</p>
             <hr>
-        </div>
         `
 
 
@@ -104,7 +102,7 @@ function showRelatedProducts(productsArray, arrayRelated){
     let related = "";
     arrayRelated.forEach(function(i) {
         related +=`
-        <div style="border: 3px solid #dee2e6; display: flex; margin-top: 10px; width: 48%; margin-right: 1%; margin-left: 1%; background-color: white; border-radius: .25rem;">
+        <div class="related-div">
             <img src="` + productsArray[i].imgSrc + `" class="product-img" style="width: 43%; padding: .25rem">
             <div style="position: relative;">
                 <h3 style="margin-left: 2px;"><b>`+ productsArray[i].name +`</b></h3>
