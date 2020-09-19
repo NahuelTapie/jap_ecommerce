@@ -55,11 +55,10 @@ document.addEventListener("DOMContentLoaded", function(e){
     infoUser.style = "display: inline-block; color: #d3384d";
   }else{
     user.innerText = user.innerText + "Iniciar sesión";
-    document.getElementById("user").classList.remove("dropdown-toggle");
-    document.getElementById("user").classList.add("dropdown");
-    /*document.getElementById("user").addEventListener("click", function(e){
+    $("#user").removeAttr("data-toggle");
+    document.getElementById("user").addEventListener("click", function(e){
       window.location = "index.html";
-    });*/
+    });
 
   }
 
