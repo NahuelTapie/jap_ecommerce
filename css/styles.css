@@ -157,9 +157,23 @@ a.custom-card:hover {
   top: 413px;
 }
 
-#sortPriceDesc{
-
+.sortBtn{
+  width: 32px;
+  transform: rotateX(180deg);
 }
+
+.sortBtn1{
+  width: 32px;
+  height: 32px;
+}
+
+.sortIcons{
+  display: flex;
+  justify-content: center;
+  font-size: 26px;
+}
+
+
 
 /*--------------------product-info----------------------*/
 .carousel-inner{

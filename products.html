@@ -9,6 +9,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
@@ -44,17 +45,14 @@
     </div>
     <main role="main" class="pb-5">
       <div class="text-center p-4">
-        <h2>Listado
-          <button id="sortPriceAsc"><img src="https://img.icons8.com/metro/26/000000/sorting-answers.png" style="transform: rotate(180deg);" /></button>
-          <button id="sortPriceDesc" style="width: 40px; height: 40px; margin-top: 1;"><img src="https://img.icons8.com/metro/26/000000/sorting-answers.png" style="text-align: center; top: 50%; bottom: 50%; margin-bottom: 50%;" /></button>
-        </h2>
+      <h2>Listado</h2>
       </div>
       <div class="container">
         <div class="filter">
           <p>Ordenar por:</p>
-          <button id="sortPriceAsc"><img src="https://img.icons8.com/metro/26/000000/sorting-answers.png" style="transform: rotate(180deg);" /></button><br><br>
+          <!--<button id="sortPriceAsc"><img src="https://img.icons8.com/metro/26/000000/sorting-answers.png" style="transform: rotate(180deg);" /></button><br><br>
           <button id="sortPriceDesc"><img src="https://img.icons8.com/metro/26/000000/sorting-answers.png" style="width: 100%;" /></button><br><br>
-          <button id="sortByRelevance">Relevancia<img src="https://img.icons8.com/wired/26/000000/best-seller.png"/></button>
+          <button id="sortByRelevance">Relevancia<img src="https://img.icons8.com/wired/26/000000/best-seller.png"/></button>-->
         <div class="vl1">
           <p>Ordenar por rango de precio:</p>
           <input type="number" placeholder="mínimo" id="minimPrice"><br>
@@ -64,8 +62,10 @@
         </div>
       </div>
       <div>
-        <button id="sortPriceAsc"><img src="https://img.icons8.com/metro/26/000000/sorting-answers.png" style="transform: rotate(180deg);" /></button>
-        <button id="sortPriceDesc"><img src="https://img.icons8.com/metro/26/000000/sorting-answers.png" style="width: 100%;" /></button>
+        <h6>Ordenar por precio o relevancia</h6>
+        <button class="sortBtn" id="sortPriceAsc"><i class="material-icons sortIcons">sort</i></button>
+        <button class="sortBtn1" id="sortPriceDesc"><i class="material-icons sortIcons">sort</i></button>
+        <button class="sortBtn1" id="sortByRelevance"><i class="material-icons sortIcons">call_missed_outgoing</i></button>
       </div><br>
       <div class="row">
       <div class="prod-group" id="prod-list-container"></div>
