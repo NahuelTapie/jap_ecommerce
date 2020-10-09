@@ -160,13 +160,13 @@ a.custom-card:hover {
 input[type="number"] {
   width: 70px; 
 }
-
+/*
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
-
+*/
 .slider-line {
   height: 5px;
   border-radius: 2.5px;

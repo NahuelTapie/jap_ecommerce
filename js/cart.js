@@ -4,26 +4,20 @@ function CartInfo(){
 
 var CartArray = {};
 
+function totalProduct(i, unitCost){
+    let val = document.getElementById(`cartCount${i}`).value;
+    let number = parseInt(val);
+    total = unitCost * number;
+    document.getElementById(`totalProduct${i}`).innerHTML = total;
+}
+
 function showCartInfo(){
     let htmlContentToAppend = "";
     for(let i = 0; i < Array.length; i++){
         var Cart = CartArray.articles[i];
-
-        function totalProduct(val){
-            let number = parseInt(val);
-            total = Cart.unitCost * val;
-            return total;
-        }
     
 
     htmlContentToAppend +=`
-    <h1>`+ Cart.name +`</h1>
-    <h4>`+ Cart.count +`</h4>
-    <h5>`+ Cart.unitCost +`</h5>
-    <h6>`+ Cart.currency +`</h6>
-    <span><img src="`+ Cart.src +`"></span><br><br><br>
-
-
     <table class="tcart cart-page">
         <thead style="text-align: center;">
         <tr style="text-align: center;">
@@ -35,10 +29,10 @@ function showCartInfo(){
         </tr>
         <tr>
         <td style="border: 1px solid #696969"><div style="display: flex;"><img class="cartImg" src="`+ Cart.src +`"><h2 style="float: left;">`+ Cart.name +`</h2></div></td>
-        <td style="border: 1px solid #696969"><div><button type="button" onclick="remove()" style="border-color: rgba(118, 118, 118, 0.3); margin-right: 5px;"><span>-</span></button><input type="number" id="cartCount" style="text-align: center; cursor: text;" value="`+ Cart.count +`" size="4" maxlength="12" disabled onchange="totalProduct(this.value)"></input><button type="button" onclick="add()" style="border-color: rgba(118, 118, 118, 0.3); margin-left: 5px;"><span>+</span></button></div></td>
+        <td style="border: 1px solid #696969"><input type="number" id="cartCount${i}" style="text-align: center;" value="`+ Cart.count +`" onchange="totalProduct(${i},${Cart.unitCost})"></input></td>
         <td style="border: 1px solid #696969"><span class="material-icons" onclick="removeItem()">remove_shopping_cart</span></td>
         <td style="border: 1px solid #696969" id="unitCost">`+ Cart.unitCost +`</td>
-        <td style="border: 1px solid #696969"><span id="totalProduct"></span>`+ totalProduct() +`</td>
+        <td style="border: 1px solid #696969"><span id="totalProduct${i}"></span></td>
         </tr>
         </thead>
     </table>
