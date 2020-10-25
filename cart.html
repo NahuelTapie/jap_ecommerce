@@ -62,31 +62,31 @@
   </nav>
 
 
-  <div id="CartInfo">
+  <div id="CartInfo" style="position: relative;">
     <table class="tcart cart-page">
       <thead style="text-align: center;">
         <tr style="text-align: center;">
-          <th>Producto</th>
+          <th colspan="2">Producto</th>
           <th>Cantidad</th>
           <th>Eliminar</th>
           <th>Valor unitario</th>
           <th>Valor total</th>
         </tr>
       </thead>
-      <tbody id="cartItems"></tbody>
+      <tbody id="cartItems"> </tbody>
     </table>
-  </div><br><br><br><br><br><br><br><br><br><br><br>
-  <div id="Shipping">
-    <input id="premium" type="radio" value="15" checked>
+  </div><hr>
+
+  <div id="Shipping" style="position: absolute;">
+    <input id="premium" name="shipping" type="radio" value="15" checked>
     <label for="premium">Envío premium 2-5 días</label><br>
 
-    <input id="express" type="radio" value="7">
+    <input id="express" name="shipping" type="radio" value="7">
     <label for="express">Envío express 5-8 días</label><br>
 
-    <input id="standard" type="radio" value="5">
+    <input id="standard" name="shipping" type="radio" value="5">
     <label for="standard">Envío standard 12-15 días</label><br>
   </div>
-  <br><br><br><br><br><br><br>
 
   <div id="spinner-wrapper">
     <div class="lds-ring">

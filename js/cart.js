@@ -1,20 +1,39 @@
-var CartArray = {};
+var CartArray = [];
+let curren = "USD ";
 
+function convert(currency, unitCost){
+    if(currency === "UYU"){
+        return unitCost / 40;
+    }else{
+        return unitCost;
+    }
+}
 
-function showCartInfo() {
+function showCartInfo(array) {
+
     let htmlContentToAppend = "";
-    for (let i = 0; i < Array.length; i++) {
-        let Cart = CartArray.articles[i];
 
-        let subTotal = Cart.unitCost * Cart.count;
+    for (let i = 0; i < array.length; i++) {
+
+        let Cart = array[i];
+
+        let dollars = convert(Cart.currency, Cart.unitCost);
+
+        let subTotal = curren + dollars * Cart.count;
 
         htmlContentToAppend += `
         <tr>
-            <td style="border: 1px solid #696969"><div style="display: flex;"><img class="cartImg" src="${Cart.src}"><h2 style="float: left;">` + Cart.name + `</h2></div></td>
-            <td style="border: 1px solid #696969; text-align:center;"><input type="number" id="cartCount${i}" style="text-align: center;" value="` + Cart.count + `" onchange="totalProduct(${i},${Cart.unitCost})"></td>
-            <td style="border: 1px solid #696969"><span style="display:block; text-align: center;" class="material-icons" onclick="removeItem()">remove_shopping_cart</span></td>
-            <td style="border: 1px solid #696969; text-align: center;" id="unitCost">`+ Cart.currency + " " + Cart.unitCost + `</td>
-            <td style="border: 1px solid #696969; text-align: center;"><span>${Cart.currency} </span><span id="totalProduct${i}">${subTotal}</span></td>
+        <td style="width: 125px; height: 117px;"><img src="${Cart.src}" class="cartImg" alt="${Cart.name} image"></td>
+
+        <td><h4>${Cart.name}</h4></td>
+        
+        <td class="center"><input type="number" class="cartInput" id="cartCount${i}" value="${Cart.count}" onchange="totalProduct(${i},${dollars})"></td>
+        
+        <td class="center"><span id="removeItem" class="material-icons">remove_shopping_cart</span></td>
+
+        <td class="center">USD ${dollars}</td>
+
+        <td class="center" id="totalProduct${i}">${subTotal}</td>
         </tr>
         `
         document.getElementById("cartItems").innerHTML = htmlContentToAppend;
@@ -22,12 +41,14 @@ function showCartInfo() {
 }
 
 
-function totalProduct(i, unitCost) {
+
+function totalProduct(i, dollars) {
     let inputNumber = document.getElementById(`cartCount${i}`);
     let newNumber = parseInt(inputNumber.value);
-    total = unitCost * newNumber;
-    document.getElementById(`totalProduct${i}`).innerHTML = total;
+    total = dollars * newNumber;
+    document.getElementById(`totalProduct${i}`).innerHTML = curren + total;
 }
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -35,10 +56,10 @@ function totalProduct(i, unitCost) {
 document.addEventListener("DOMContentLoaded", function (e) {
 
 
-    getJSONData(CART_INFO_URL).then(function (resultObj) {
+    getJSONData("https://japdevdep.github.io/ecommerce-api/cart/654.json").then(function (resultObj) {
         if (resultObj.status === "ok") {
-            CartArray = resultObj.data;
-            showCartInfo();
+            CartArray = resultObj.data.articles;
+            showCartInfo(CartArray);
         }
     });
 });
