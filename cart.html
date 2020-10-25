@@ -12,6 +12,7 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
 
   <style>
     .bd-placeholder-img {
@@ -87,6 +88,32 @@
     <input id="standard" name="shipping" type="radio" value="5">
     <label for="standard">Envío standard 12-15 días</label><br>
   </div>
+
+  <!-- Button trigger modal -->
+  <button type="button" id="modalBtn" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
+    Confirmar pago
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>  
 
   <div id="spinner-wrapper">
     <div class="lds-ring">
