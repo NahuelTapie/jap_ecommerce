@@ -54,15 +54,40 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container p-5" style="width: 1066px;">
+    <div style="float: left; border: 1px solid pink;">
+      <img id="img" src="img/profile.png" alt="" style="max-width: 250px; max-height: 250px;">
+      <div id="content"></div>
     </div>
-  </div>
-  <footer class="text-muted bg-light">
+    <div style="float: right; border: 1px solid blue; display: inline-block; top: 0 !important; width: 700px; height: 680px; margin-left: 18px; position: relative;">
+      <h3><strong>Datos del usuario</strong></h3><hr>
+      <div style="position: absolute; left: 16px; border: 1px solid red">
+        <label for="imgUrl">Ingrese link público de la imagen</label>
+        <input type="text" id="imgUrl" class="form-control" value=""><br>
+
+        <label for="name">Nombre</label>
+        <input type="text" id="name" class="form-control" value=""><br>
+
+        <label for="surname">Apellido</label>
+        <input type="text" id="surname" class="form-control" value=""><br>
+
+        <label for="age">Edad</label>
+        <input type="number" id="age" class="form-control" value=""><br>
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" class="form-control" value=""><br>
+
+        <label for="telephone">Número de teléfono</label>
+        <input type="text" id="telephone" class="form-control" value=""><br>
+      </div>
+      <div style="border: 1px solid green; width: 300px; height: 200px; top: 96px; position: absolute; right: 0; font-style: italic; color: rgb(117, 117, 117);">
+        <p>En ésta sección podrás guardar y editar la información personal de tu cuenta cuantas veces quieras!.</p>
+      </div>
+
+      <button type="button" id="btnSave" class="btn btn-success" style="position: absolute; bottom: 0; width: 350px; left: 175px;">Guardar</button>
+    </div>
+  </div><br><br><br>
+  <footer class="text-muted bg-light" style="margin-top: 40px; bottom: 0; position: absolute;">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
