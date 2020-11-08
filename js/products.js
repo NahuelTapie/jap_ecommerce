@@ -86,7 +86,7 @@ function showProductsList(array){
                         <p class="card-text">` + category.description +`</p>
                         <h5>` +category.currency+ " "+category.cost +`</h5>
                     </div>
-                    <div style="flex-basis: 0; flex-grow: 1; text-align: center;">
+                    <div class="soldClass" style="flex-basis: 0; flex-grow: 1; text-align: center;">
                         <small class="text-muted">` + category.soldCount + ` vendidos</small>
                     </div>
                 </div>
