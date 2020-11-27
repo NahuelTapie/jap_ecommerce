@@ -348,6 +348,29 @@ td{
 }
 
 
+.card-img{
+  width: 400% !important;
+  max-width: 250px;
+}
+
+.card-text{
+  width: 200px;
+  text-align: justify;
+}
+
+.card-body{
+  max-width: 150px;
+}
+
+.text-muted{
+  margin-top: 10px;
+}
+
+.soldClass{
+  max-height: 50px;
+  margin-top: 15px;
+}
+
 
 .creditCard{
   margin-left: -5px;
