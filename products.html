@@ -1,74 +1,80 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <title>eMercado - Todo lo que busques está aquí</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>eMercado - Todo lo que busques está aquí</title>
 
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
-  </head>
-  <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="cover.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <div class="btn-group">
-          <a class="btn btn-danger dropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="user"></a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="cart.html"><span class="fa fa-shopping-cart" style="margin-right: 8px;"></span>Carrito</a>
-            <a class="dropdown-item" href="my-profile.html"><span class="fa fa-address-card" style="margin-right: 4px;"></span>Perfil</a>
-            <a class="dropdown-item" role="button" id="salir">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-bar-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-right: 7px; margin-bottom: 3px;">
-                <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"/>
-              </svg>Cerrar sesión
-            </a>
-          </div>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+</head>
+
+<body>
+  <nav class="site-header sticky-top py-1 bg-dark">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+      <a class="py-2 d-none d-md-inline-block" href="cover.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+      <div class="btn-group">
+        <a class="btn btn-danger dropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" id="user"></a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="cart.html"><span class="fa fa-shopping-cart"
+              style="margin-right: 8px;"></span>Carrito</a>
+          <a class="dropdown-item" href="my-profile.html"><span class="fa fa-address-card"
+              style="margin-right: 4px;"></span>Perfil</a>
+          <a class="dropdown-item" role="button" id="salir">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-bar-right" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg" style="margin-right: 7px; margin-bottom: 3px;">
+              <path fill-rule="evenodd"
+                d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z" />
+            </svg>Cerrar sesión
+          </a>
         </div>
       </div>
-    </nav>
-    <div class="container p-5">
-      <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-        <h4 class="alert-heading">¡A trabajar! :)</h4>
-        <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) y Entrega 2 (Fecha de entrega: 30/08/2020).</p>
-        <hr>
-        <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-      </div>
     </div>
-    <main role="main" class="pb-5">
-      <div class="text-center p-4">
-      <h2>Listado</h2>
+  </nav>
+  <main role="main" class="pb-5">
+    <div class="container" id="cont">
+      
+      <div class="row">
+        <div class="col text-right">
+        </div>
       </div>
-      <div class="container">
-        <div class="filter">
-          <p>Ordenar por:</p>
-          <!--<button id="sortPriceAsc"><img src="https://img.icons8.com/metro/26/000000/sorting-answers.png" style="transform: rotate(180deg);" /></button><br><br>
-          <button id="sortPriceDesc"><img src="https://img.icons8.com/metro/26/000000/sorting-answers.png" style="width: 100%;" /></button><br><br>
-          <button id="sortByRelevance">Relevancia<img src="https://img.icons8.com/wired/26/000000/best-seller.png"/></button>-->
-        <div class="vl1">
-          <p>Ordenar por rango de precio:</p>
-          <input input="min" type="number" placeholder="mínimo" id="minimPrice"> -
-          <input input="max" type="number" placeholder="máximo" id="maximPrice"><br>
-          <div data-role="rangeslider">
-            <label for="price-min">Price:</label>
-            <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-            <label for="price-max">Price:</label>
-            <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
-          </div><br>
-          <button id="filter">Filtrar</button>
-          <button id="clean">Limpiar</button>
+      <div class="row justify-content-end">
+        <div class="col-md-6"></div>
+      </div>
+      <div class="col-md-6 col-sm-12 mb-1 container">
+        <div class="row container p-0 m-0">
+          <div class="col">
+            <p class="font-weight-normal text-right my-2">Rango de precio:</p>
+          </div>
+          <div class="col" id="range">
+            <div class="col">
+              <input input="min" type="number" placeholder="mín." id="minimPrice" class="form-control">
+            </div>
+            <div class="col">
+              <input input="max" type="number" placeholder="máx." id="maximPrice" class="form-control">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button id="filter" class="btn btn-light btn-block">Filtrar</button>
+                <button id="clean" class="btn btn-link btn-sm">Limpiar</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div>
@@ -79,23 +85,31 @@
       </div><br>
 
       <div class="content">
-      <div class="prod-group row" id="prod-list-container"></div>
+        <div class="prod-group row" id="prod-list-container"></div>
       </div>
 
-    </main>
-    <footer class="text-muted bg-light">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-      </div>
-    </footer>
-    <div id="spinner-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/products.js"></script>
-  </body>
+  </main>
+  <footer class="text-muted bg-light">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/products.js"></script>
+</body>
+
 </html>

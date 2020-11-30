@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  
+
 
   <style>
     .bd-placeholder-img {
@@ -63,7 +63,7 @@
   </nav>
 
 
-  <div id="CartInfo" style="position: relative;">
+  <div id="CartInfo">
     <table class="tcart cart-page">
       <thead style="text-align: center;">
         <tr style="text-align: center;">
@@ -76,10 +76,12 @@
       </thead>
       <tbody id="cartItems"> </tbody>
     </table>
-  </div><hr>
+  </div>
+  <hr>
 
   <div id="Shipping">
     <div>
+      <h5><strong>Tipo de envío</strong></h5>
       <input id="premium" name="shipping" type="radio" value="15" checked>
       <label for="premium">Envío premium: 2 a 5 días</label><br>
 
@@ -89,40 +91,45 @@
       <input id="standard" name="shipping" type="radio" value="5">
       <label for="standard">Envío standard: 12 a 15 días</label>
     </div>
-    <div>
-      <select>
-        <option disabled selected>Seleccione su departamento</option>
-        <option value="0">Montevideo</option>
-        <option value="1">Rivera</option>
-        <option value="2">Durazno</option>
-        <option value="3">Cerro largo</option>
-      </select><br><br>
-      <input type="text" placeholder="Nombre de la calle"><br><br>
-      <input type="text" placeholder="Numero de casa"><br><br>
-      <input type="text" placeholder="Código postal">
-    </div>
-
-    <div style="display: flex;">
-      <p style="text-align: center; margin-left: 0;">Porcentaje del envío:   <span id="percentageShipp"></span>%</p>
-      <p style="text-align: center;">Costo de envío: <span id="shippingCost"></span></p>
-      <p style="text-align: center;">Subtotal: USD<span id="total"></span></p>
-      <p style="text-align: center;">Costo total: <span id="purchase"></span></p>
-    </div>
-    <h1 id="asd"></h1>
-    <button type="button" class="btn btn-outline-success" style="width: 431px; margin-left: 1px;" onclick="alert()">Confirmar</button>
+    <form id="needs-validation" novalidate>
+      <div>
+        <h5><strong>Domicilio</strong></h5>
+        <select id="select" class="form-control" required>
+          <option value="0" selected>Uruguay</option>
+          <option value="1">Bolivia</option>
+          <option value="2">Chile</option>
+          <option value="3">Paraguay</option>
+        </select><br>
+        <input type="text" class="form-control" placeholder="Nombre de la calle" required>
+        <div class="invalid-feedback">Por favor, ingrese su calle</div><br>
+        <input type="text" class="form-control" placeholder="Esquina" required>
+        <div class="invalid-feedback">Por favor, ingrese su esquina</div><br>
+        <input type="text" class="form-control" placeholder="Número de casa" required>
+        <div class="invalid-feedback">Por favor, ingrese su número de puerta</div><br>
+      </div>
+      <!---------->
+      <hr>
+      <div id="purchaseSummary">
+        <p style="text-align: center; margin-left: 0;"><strong>Porcentaje del envío: </strong><span
+            id="percentageShipp"></span>%</p>
+        <p style="text-align: center;"><strong>Costo de envío: </strong><span id="shippingCost"></span></p>
+        <p style="text-align: center;"><strong>Subtotal: </strong>USD<span id="total"></span></p>
+        <p style="text-align: center;"><strong>Costo total: </strong><span id="purchase"></span></p>
+      </div>
+      <!-- Button trigger modal -->
+      <button type="button" id="modalBtn" class="btn btn-outline-danger" data-toggle="modal"
+        data-target="#exampleModal">
+        Forma de pago
+      </button><br>
+      <button type="submit" class="btn btn-outline-success" style="width: 431px; margin-left: 1px;">Confirmar</button>
   </div>
+  </form>
 
   <div class="alert alert-success" id="alerta" role="alert" style="display: none; text-align: center;">
     Compra realizada!
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
+      <span aria-hidden="true">&times;</span>
   </div>
-  
-
-  <!-- Button trigger modal -->
-  <button type="button" id="modalBtn" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
-    Forma de pago
-  </button>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -134,45 +141,51 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <div>
-            <h5>Datos de pago</h5>
-            <select id="paymentMethod" onchange="paymentMethod(this)">
-              <option disabled selected>Ingrese un método de pago</option>
-              <option value="0">Tarjeta de crédito</option>
-              <option value="1">Transferencia bancaria</option>
-            </select><br><br>
-            <div id="creditCard" style="display: none;">
-              <input type="text" id="credName" placeholder="Nombre titular">
-              <input type="text" id="credLastn" placeholder="Apellido titular">
-              <label for="creditNumber"><h6>Ingrese el número de tarjeta y su código</h6></label><br>
-              <input name="creditNumber" id="credNumb" type="number" placeholder="xxxx-xxxx-xxxx-xxxx" style="width: 162px;">
-              <input class="creditCard" id="credCode" type="number" placeholder="cvv" style="width: 48px;"><br>
-              <label for="expirationDate">Fecha de vencimiento</label><br>
-              <input type="number" id="credExp" name="expirationDate" placeholder="MM/YY" style="width: 78px;">
-            </div>
-            <div id="bankTransfer" style="display: none;">
-              <input type="text" id="bankName" placeholder="Nombre titular">
-              <input type="text" id="bankLastn" placeholder="Apellido titular">
-              <label for="creditNumber"><h6>Ingrese el número de tarjeta</h6></label><br>
-              <input name="creditNumber" id="bankNumber" type="number" placeholder="xxxx-xxxx-xxxx-xxxx" style="width: 162px;">
+          <div class="modal-body">
+            <div>
+              <h5>Datos de pago</h5>
+              <select id="paymentMethod" onchange="payMethod(this)" class="form-control" required>
+                <option value="0">Tarjeta de crédito</option>
+                <option value="1">Transferencia bancaria</option>
+              </select>
+              <div id="creditCard" style="display: inline-block;">
+                <input type="text" id="credName" placeholder="Nombre titular" class="form-control" required>
+                <input type="text" id="credLastn" placeholder="Apellido titular" class="form-control" required>
+                <label for="creditNumber">
+                  <h6>Ingrese el número de tarjeta y su código</h6>
+                </label><br>
+                <input name="creditNumber" id="credNumb" type="number" placeholder="xxxx-xxxx-xxxx-xxxx"
+                  style="width: 162px;" class="form-control" required>
+                <input class="creditCard form-control" id="credCode" type="number" placeholder="cvv"
+                  style="width: 48px;" required><br>
+                <label for="expirationDate">Fecha de vencimiento</label><br>
+                <input type="number" id="credExp" name="expirationDate" placeholder="MM/YY" style="width: 78px;"
+                  class="form-control" required>
+              </div>
+              <div id="bankTransfer" style="display: none;">
+                <input type="text" id="bankName" placeholder="Nombre titular" class="form-control" required>
+                <input type="text" id="bankLastn" placeholder="Apellido titular" class="form-control" required>
+                <label for="creditNumber">
+                  <h6>Ingrese el número de tarjeta</h6>
+                </label><br>
+                <input name="creditNumber" id="bankNumber" type="number" placeholder="xxxx-xxxx-xxxx-xxxx"
+                  style="width: 162px;" class="form-control" required>
+              </div>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+            <button type="submit" id="modalConfirm" class="btn btn-outline-danger" data-dismiss="modal">Confirmar</button>
           </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-          <button type="button" id="modalConfirm" class="btn btn-outline-danger">Confirmar</button>
-        </div>
       </div>
     </div>
-  </div>  
-
-  <div class="alert alert-success" id="empty" style="display: none;" role="alert">
-    Compra aceptada
   </div>
 
   <div class="alert alert-danger" id="emptyf" style="display: none;" role="alert">
-    Hay campos vacíos 
+    Hay campos vacíos
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 
   <div id="spinner-wrapper">

@@ -2,10 +2,10 @@ var CartArray = [];
 let curren = "USD ";
 var percent = document.getElementById("percentageShipp").innerText;
 
-function convert(currency, unitCost){
-    if(currency === "UYU"){
+function convert(currency, unitCost) {
+    if (currency === "UYU") {
         return unitCost / 40;
-    }else{
+    } else {
         return unitCost;
     }
 }
@@ -42,17 +42,21 @@ function showCartInfo(array) {
     calcTotal();
 }
 
+function deleteItem(i) {
+    CartArray.splice(i, 1);
+}
+
 function totalProduct(i, dollars) {
     let inputNumber = parseInt(document.getElementById(`cartCount${i}`).value);
     stotal = dollars * inputNumber;
-    document.getElementById(`totalProduct${i}`).innerHTML = curren + stotal;
+    document.getElementById(`totalProduct${i}`).innerHTML = stotal;
     calcTotal();
 }
 
-function calcTotal(){
+function calcTotal() {
     let total = 0;
     let subs = document.getElementsByClassName("subtotal");
-    for (let i = 0; i < subs.length; i++){
+    for (let i = 0; i < subs.length; i++) {
         total += parseInt(subs[i].innerHTML);
     }
     total = total;
@@ -65,35 +69,35 @@ function calcEnvio() {
     let envio;
 
     let elements = document.getElementsByName("shipping");
-    for(var i = 0; i < elements.length; i++){
-        if(elements[i].checked){
-            envio = parseInt(elements[i].value); 
+    for (var i = 0; i < elements.length; i++) {
+        if (elements[i].checked) {
+            envio = parseInt(elements[i].value);
         }
     }
 
     ENVIO = ((total * envio) / 100);
 
     TOTAL = total + ((total * envio) / 100);
-    document.getElementById("shippingCost").innerHTML = "USD"+ENVIO;
+    document.getElementById("shippingCost").innerHTML = "USD" + ENVIO;
     document.getElementById("percentageShipp").innerHTML = envio;
-    document.getElementById("purchase").innerHTML = "USD"+TOTAL;
+    document.getElementById("purchase").innerHTML = "USD" + TOTAL;
 }
 
-function paymentMethod(select){
-    if(select.value=== "0"){
-     document.getElementById('creditCard').style.display = "block";
-     document.getElementById('bankTransfer').style.display = "none";
-    }if(select.value === "1"){
-     document.getElementById('bankTransfer').style.display = "block";
-     document.getElementById('creditCard').style.display = "none";
+function payMethod(select) {
+    if (select.value === "0") {
+        document.getElementById('creditCard').style.display = "block";
+        document.getElementById('bankTransfer').style.display = "none";
+    } else if (select.value === "1") {
+        document.getElementById('bankTransfer').style.display = "block";
+        document.getElementById('creditCard').style.display = "none";
     }
 }
 
-/*
-function alert(){
-    document.getElementById("alerta").style.display = "inline-block";
+
+function alert() {
+    document.getElementById("alerta").style.display = "block";
 }
-*/
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -104,62 +108,116 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj.status === "ok") {
             CartArray = resultObj.data.articles;
             showCartInfo(CartArray);
-            calcEnvio();
         }
     });
 
     let elements = document.getElementsByName("shipping");
     for (var i = 0; i < elements.length; i++) {
-        elements[i].addEventListener("change", function(){
+        elements[i].addEventListener("change", function () {
             calcEnvio();
         });
     }
-    
-});
 
-document.getElementById("modalConfirm").addEventListener("click", function(){
-    validation();
-});
-var name = document.getElementById("credName");
-var lastn = document.getElementById("credLastn"); 
-var crednum = document.getElementById("credNumb");
-var credcode = document.getElementById("credCode");
-var expiration = document.getElementById("credExp");
 
-var bankName = document.getElementById("bankName");
-var bankLastn = document.getElementById("bankLastn");
-var bankNumber = document.getElementById("bankNumber");
-function validation(){
-    let empty = false
-    if(document.getElementById("paymentMethod").value === "0"){
-        if(name.value === ""){
-            empty = "Nombre titular"
+    let form = document.getElementById("needs-validation");
+    form.addEventListener('submit', function (e) {
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }else{
+            alert();
         }
-        if(lastn.value === ""){
-            empty = "Apellido titular"
+        form.classList.add("was-validated");
+    });
+
+    document.getElementById("modalConfirm").addEventListener("click", function (e) {
+        var name = document.getElementById("credName");
+        var lastn = document.getElementById("credLastn");
+        var crednum = document.getElementById("credNumb");
+        var credcode = document.getElementById("credCode");
+        var expiration = document.getElementById("credExp");
+
+        var bankName = document.getElementById("bankName");
+        var bankLastn = document.getElementById("bankLastn");
+        var bankNumber = document.getElementById("bankNumber");
+
+        var campo = true;
+        var select = document.getElementById("paymentMethod");
+        if (select.value === "0") {
+            if (name.value === "") {
+                name.classList.add("is-invalid");
+                campo = false;
+                document.getElementById("emptyf").style.display = "inline-block";
+            } else {
+                name.classList.add("is-valid");
+            }
+
+            if (lastn.value === "") {
+                lastn.classList.add("is-invalid");
+                campo = false;
+                document.getElementById("emptyf").style.display = "inline-block";
+            } else {
+                lastn.classList.add("is-valid");
+            }
+
+            if (crednum.value === "") {
+                crednum.classList.add("is-invalid");
+                campo = false;
+                document.getElementById("emptyf").style.display = "inline-block";
+            } else {
+                crednum.classList.add("is-valid");
+            }
+
+            if (credcode.value === "") {
+                credcode.classList.add("is-invalid");
+                campo = false;
+                document.getElementById("emptyf").style.display = "inline-block";
+            } else {
+                credcode.classList.add("is-valid");
+            }
+
+            if (expiration.value === "") {
+                expiration.classList.add("is-invalid");
+                campo = false;
+                document.getElementById("emptyf").style.display = "inline-block";
+            } else {
+                expiration.classList.add("is-valid");
+            }
+        } else {
+
         }
-        if(crednum.value === ""){
-            empty = "Número de tarjeta"
+
+        if (select.value === "1") {
+            if (bankName.value === "") {
+                bankName.classList.add("is-invalid");
+                campo = false;
+                document.getElementById("emptyf").style.display = "inline-block";
+            } else {
+                bankName.classList.add("is-valid");
+            }
+
+            if (bankLastn.value === "") {
+                bankLastn.classList.add("is-invalid");
+                campo = false;
+                document.getElementById("emptyf").style.display = "inline-block";
+            } else {
+                bankLastn.classList.add("is-valid");
+            }
+
+            if (bankNumber.value === "") {
+                bankNumber.classList.add("is-invalid");
+                campo = false;
+                document.getElementById("emptyf").style.display = "inline-block";
+            } else {
+                bankNumber.classList.add("is-valid");
+            }
+        } else {
+
         }
-        if(credcode.value === ""){
-            empty = "Código de seguridad"
-        }
-        if(expiration === ""){
-            empty = "Fecha de vencimiento"
-        }
-    }else{
-        if(bankName.value === ""){
-            empty = "Nombre titular"
-        }
-        if(bankLastn.value === ""){
-            empty = "Apellido titular"
-        }
-        if(bankNumber.value === ""){
-            empty = "Número de tarjeta"
-        }
-    }if(empty === false){
-        document.getElementById("empty").style.display = inline-block;
-    }else{
-        document.getElementById("emptyf").style.display = inline-block;
-    }
-}
+
+
+
+    });
+
+
+});

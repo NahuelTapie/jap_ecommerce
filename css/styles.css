@@ -342,9 +342,13 @@ td{
 
 
 #modalBtn{
-  float: left;
-  margin-left: 7.5%;
-  width: 550px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
 }
 
 
@@ -383,5 +387,32 @@ td{
   border: 0;
 }
 
+#cont{
+  margin-top: 60px;
+}
+
+#maximPrice{
+  top: -30px; 
+  left: 20px; 
+  width: 90px;
+}
+
+#range{
+  float: right; 
+  display: inline-flex;
+}
+
+#minimPrice{
+  float: left; 
+  width: 90px;
+}
+
+#CartInfo{
+  position: relative;
+}
+
+#purchaseSummary{
+  display: flex;
+}
 
 
